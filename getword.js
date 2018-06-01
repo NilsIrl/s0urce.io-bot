@@ -563,8 +563,35 @@ function fillForm () {
     if (result != null) {
         $('#tool-type-word').val(result)
         $('#tool-type-form').submit()
+    } else {
+        return false
     }
+    return true
 }
 
-var interval = setInterval(fillForm, 750);
+function clearScreen() {
+    if (document.getElementById('topwindow-success').style.display != 'none') {
+        document.getElementById('targetmessage-button-send').click()
+    }
+
+}
+
+function autoChoose() {
+    var noPlayer = document.getElementById('player-list').childNodes.length
+    var selectedPlayer = document.getElementById('player-list').childNodes[parseInt(noPlayer*Math.random())]
+    selectedPlayer.click();
+    document.getElementById('window-other-button').click()
+    document.getElementById('window-other-port'+parseInt(3*Math.random())).click()
+
+}
+
+function main() {
+    if (fillForm() == false) {
+        clearScreen();
+        autoChoose();
+    }
+
+}
+
+var interval = setInterval(main, 750);
 
