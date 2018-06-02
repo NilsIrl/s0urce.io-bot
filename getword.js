@@ -585,11 +585,18 @@ function autoChoose() {
 
 }
 
+function autoBuy () {
+    if (document.getElementById('shop-quantum-server').style.opacity == 1) {
+        document.getElementById('shop-quantum-server').click();
+    }
+}
+
 function main() {
     if (fillForm() == false) {
         clearScreen();
         autoChoose();
     }
+    autoBuy();
 
 }
 
